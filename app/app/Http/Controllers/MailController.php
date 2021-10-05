@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Mail; //追加
 
-class MailsController extends Controller
+class MailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class MailsController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $posts = Mail::get();
+        return view('index',['posts'=>$posts]);
     }
 
     /**
@@ -23,7 +26,7 @@ class MailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin');
     }
 
     /**
@@ -34,12 +37,21 @@ class MailsController extends Controller
      */
     public function store(Request $request)
     {
-                //以下に登録処理を記述（Eloquentモデル）
-        $mails = new Mail;
-        $mails->mail_title = $request->mail_title;
-        $mails->mail_desc = $request->mail_desc;
-        $mails->user_id = Auth::id();//ここでログインしているユーザidを登録しています
-        $mails->save();
+        $files = $request->file('photo_list');
+        foreach($files as $file){
+           // dd($request->all());
+       $file_name = $file->getClientOriginalName();
+       $file->storeAS('public/image',$file_name);
+
+       //以下に登録処理を記述（Eloquentモデル）
+       $posts = new Mail;
+       // $posts->file = $posts;
+       $posts->client_name = $request->client_name;
+       // $posts->photo_list = $file_name;
+       $posts->photo_list = $file_name;
+       $posts->save();
+       }
+       return redirect('/admin');
     }
 
     /**

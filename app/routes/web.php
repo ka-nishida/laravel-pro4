@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController; //追加
-
+use App\Http\Controllers\MailController; //追加
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +14,15 @@ use App\Http\Controllers\UploadController; //追加
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('admin',UploadController::class);
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[MailController::class,'index']);
+Route::get('admin',[MailController::class,'create']);
+Route::post('admin',[MailController::class,'store']);
+// Route::resource('/',MailController::class);
+// Route::get('admin', [UploadController::class, 'index']);
+// Route::resource('admin',UploadController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

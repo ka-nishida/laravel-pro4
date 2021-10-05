@@ -14,14 +14,16 @@ class CreateMailsTable extends Migration
     public function up()
     {
         Schema::create('mails', function (Blueprint $table) {
-            $table->uuid('mail_uu_id')->primary();
+            $table->bigIncrements('id');
             $table->string('photo_list');
-            $table->string('photo_detail');
-            $table->uuid('admin_user_uu_id');
-            $table->uuid('user_action_uu_id');
+            $table->string('photo_detail')->nullable();
+            $table->uuid('admin_user_uu_id')->nullable();
+            $table->uuid('user_action_uu_id')->nullable();
             $table->string('client_name');
-            $table->string('client_adress');
-            $table->string('client_tel');
+            $table->string('client_adress')->nullable();
+            $table->string('client_tel')->nullable();
+            $table->timestamps();
+
         });
     }
 

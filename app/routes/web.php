@@ -17,8 +17,7 @@ use App\Http\Controllers\UploadController; //追加
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('upload',UploadController::class);
-
+Route::resource('admin',UploadController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

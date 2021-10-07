@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Mail; //追加
+use InterventionImage; //追加
 
 class MailController extends Controller
 {
@@ -40,9 +41,15 @@ class MailController extends Controller
         $files = $request->file('photo_list');
         foreach($files as $file){
            // dd($request->all());
-       $file_name = $file->getClientOriginalName();
-       $file->storeAS('public/image',$file_name);
+    //    $file_name = $file->getClientOriginalName();
+    //    $file->storeAS('public/image',$file_name);
 
+       InterventionImage::make($files)
+        ->resize(800, 600, function ($constraint) {
+            $constraint->aspectRatio();
+        })
+        ->save($image_to);
+       
        //以下に登録処理を記述（Eloquentモデル）
        $posts = new Mail;
        // $posts->file = $posts;

@@ -84,9 +84,21 @@ class MailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request->scan);
+        $id = $request->scan;
+        $scans = Mail::find($id);
+        $scan = $scans->scan;
+
+        if($scan<>1){
+            $scans->scan = 1;
+            $scans->save();
+        }elseif($scan=1){
+            $scans->scan = 0;
+            $scans->save();
+        }
+        return redirect('/');
     }
 
     /**

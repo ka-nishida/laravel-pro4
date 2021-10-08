@@ -18,8 +18,10 @@ use App\Http\Controllers\MailController; //追加
 //     return view('welcome');
 // });
 Route::get('/',[MailController::class,'index']);
+Route::post('/',[MailController::class,'update']);
 Route::get('admin',[MailController::class,'create']);
 Route::post('admin',[MailController::class,'store']);
+
 // Route::resource('/',MailController::class);
 // Route::get('admin', [UploadController::class, 'index']);
 // Route::resource('admin',UploadController::class);

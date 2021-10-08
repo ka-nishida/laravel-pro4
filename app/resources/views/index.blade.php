@@ -29,8 +29,16 @@
                                 </td>
  				<!-- お気に入りボタン -->
                                 <td class="table-text">
-                                <form action="index.php" method="post">
-                                    <a href="https://forge.laravel.com"><button type=”submit” class='btn btn-danger'>scanして中身をみる</button></a>
+                                <form action="{{ url('/') }}" type=”submit” method="post">
+                                {{ csrf_field() }}
+                                    
+
+                                
+                                @if ($post->scan===1)
+                                <button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-danger'>scan申請済み</button>
+                                @else
+                                <button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-danger'>scanして中身をみる</button>
+                                @endif
                                 </form>
                                 </td>
                             </tr>

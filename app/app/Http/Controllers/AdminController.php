@@ -69,7 +69,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $Admin)
     {
-        //
+        $scan = $request->file('photo_list');
     }
 
     /**

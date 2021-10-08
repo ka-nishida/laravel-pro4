@@ -34,7 +34,7 @@ class User extends Authenticatable
     ];
     //リレーション
     public function mail() {
-        return $this->hasMany('App\Models\Mail');
+        return $this->hasMany(Mail::class);
     }
     /**
      * The attributes that should be cast.

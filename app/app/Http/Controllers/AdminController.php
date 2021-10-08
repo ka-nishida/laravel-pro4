@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin_user;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
-class AdminUserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AdminUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin_user  $admin_user
+     * @param  \App\Models\Admin  $Admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin_user $admin_user)
+    public function show(Admin $Admin)
     {
         //
     }
@@ -52,10 +52,10 @@ class AdminUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin_user  $admin_user
+     * @param  \App\Models\Admin  $Admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin_user $admin_user)
+    public function edit(Admin $Admin)
     {
         //
     }
@@ -64,10 +64,10 @@ class AdminUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin_user  $admin_user
+     * @param  \App\Models\Admin  $Admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin_user $admin_user)
+    public function update(Request $request, Admin $Admin)
     {
         //
     }
@@ -75,10 +75,10 @@ class AdminUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin_user  $admin_user
+     * @param  \App\Models\Admin  $Admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin_user $admin_user)
+    public function destroy(Admin $Admin)
     {
         //
     }

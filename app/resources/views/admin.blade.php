@@ -34,7 +34,7 @@
                     <input type="text" name="client_tel" class="form-control">
                 </div>
             </div> -->
-            <!--　登録ボタン -->
+            <!-- 登録ボタン -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-primary">
@@ -45,5 +45,7 @@
         </form>
     </div>
     <!-- 全ての投稿リスト -->
+    @if( Auth::check() )
+    @endif
     
 @endsection

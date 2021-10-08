@@ -17,13 +17,14 @@ class CreateMailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('photo_list');
             $table->string('photo_detail')->nullable();
-            $table->uuid('admin_user_uu_id')->nullable();
-            $table->uuid('user_action_uu_id')->nullable();
             $table->string('client_name');
-            $table->string('client_adress')->nullable();
-            $table->string('client_tel')->nullable();
             $table->timestamps();
-
+            $table->softDeletes();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
+            $table->bigInteger('admin_id')->unsigned()->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->OnDelete('cascade');
+            $table->integer('scan')->nullable();
         });
     }
 
@@ -35,5 +36,9 @@ class CreateMailsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('mails');
+        Schema::table('mails', function (Blueprint $table) {
+            $table->dropForeign('mails_user_id_foreign');
+            $table->dropForeign('mails_admin_id_foreign');
+        });
     }
 }

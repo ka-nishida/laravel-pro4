@@ -29,7 +29,8 @@ class MailController extends Controller
      */
     public function create()
     {
-        return view('admin');
+        $posts = Mail::get();
+        return view('admin',['posts'=>$posts]);
     }
 
     /**
@@ -41,7 +42,7 @@ class MailController extends Controller
     public function store(Request $request)
     {
         $files = $request->file('photo_list');
-        foreach($files as $file){
+        foreach((array)$files as $file){
            // dd($request->all());
        $file_name = $file->getClientOriginalName();
        $file->storeAS('public/image',$file_name);

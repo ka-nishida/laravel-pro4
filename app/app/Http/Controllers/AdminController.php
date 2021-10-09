@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\Mail; //追加
+use Auth;
+use InterventionImage; //追加
 
 class AdminController extends Controller
 {
@@ -55,9 +58,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $Admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $Admin)
+    public function edit(Mail $posts)
     {
-        //
+        return view('adminedit', ['posts' => $posts]);
     }
 
     /**
@@ -69,7 +72,18 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $Admin)
     {
-        $scan = $request->file('photo_list');
+        // dd($request->all());
+        $files = $request->file('photo_detail');
+            // dd($request->all());
+        $file_name = $files->getClientOriginalName();
+        $files->storeAS('public/detail',$file_name);
+        
+        //以下に登録処理を記述（Eloquentモデル）
+        $posts=Mail::find($request->id);
+        $posts->photo_detail = $file_name;
+        $posts->save();
+
+    return redirect('/admin');
     }
 
     /**

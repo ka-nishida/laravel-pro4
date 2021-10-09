@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController; //追加
 use App\Http\Controllers\MailController; //追加
+use App\Http\Controllers\AdminController; //追加
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ Route::get('/',[MailController::class,'index']);
 Route::post('/',[MailController::class,'update']);
 Route::get('admin',[MailController::class,'create']);
 Route::post('admin',[MailController::class,'store']);
+Route::get('adminedit/{posts}',[AdminController::class,'edit']);
+Route::post('adminedit/update',[AdminController::class,'update']);
 
 // Route::resource('/',MailController::class);
 // Route::get('admin', [UploadController::class, 'index']);

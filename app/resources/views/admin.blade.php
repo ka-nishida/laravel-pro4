@@ -27,6 +27,8 @@
                 </div>
             </div>
 
+
+
             <!-- 投稿の本文 -->
             <!-- <div class="form-group">
                 電話番号
@@ -44,8 +46,48 @@
             </div>
         </form>
     </div>
-    <!-- 全ての投稿リスト -->
-    @if( Auth::check() )
+
+     @if (count($posts) > 0)
+         <div class="card-body">
+             <div class="card-body">
+                 <table class="table table-striped task-table">
+                     <!-- テーブルヘッダ -->
+                     <thead>
+                         <th>ID</th>
+                         <th>クライアント名</th>
+                         <th>外観写真</th>
+                         <th>書類写真</th>
+                     </thead>
+                     <!-- テーブル本体 -->
+                     <tbody>
+                         @foreach ($posts as $post)
+                             <tr>
+                                <td class="table-text">
+                                     <div>{{ $post->id }}</div>
+                                 </td>
+
+                                 <td class="table-text">
+                                     <div>{{ $post->client_name }}</div>
+                                 </td>
+                                 <td class="table-text">
+                                     <div>{{ $post->photo_list }}</div>
+                                 </td>
+                                 <td class="table-text">
+                                     <div>{{ $post->photo_detail }}</div>
+                                 </td>
+ 			        <!-- 更新ボタン -->
+                                 <td>
+                                    <form action="{{ url('adminedit/'.$post->id) }}" method="GET"> {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-primary">更新 </button>
+                                    </form>
+
+                                 </td>
+                             </tr>
+                         @endforeach
+                     </tbody>
+                 </table>
+             </div>
+         </div>		
     @endif
-    
+    <!-- 全ての投稿リスト -->
 @endsection

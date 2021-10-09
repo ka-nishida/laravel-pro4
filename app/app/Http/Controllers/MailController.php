@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Mail; //追加
+use Auth;
 use InterventionImage; //追加
 
 class MailController extends Controller
@@ -17,6 +18,7 @@ class MailController extends Controller
     public function index()
     {
         $posts = Mail::get();
+        
         return view('index',['posts'=>$posts]);
     }
 
@@ -50,6 +52,7 @@ class MailController extends Controller
        $posts->client_name = $request->client_name;
        // $posts->photo_list = $file_name;
        $posts->photo_list = $file_name;
+       $posts->user_id = Auth::id();
        $posts->save();
        }
        return redirect('/admin');

@@ -1,5 +1,5 @@
 <?php
-
+use Image;
 return [
 
     /*

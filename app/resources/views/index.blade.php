@@ -27,7 +27,7 @@
                                 <td class="table-text">
                                     <div></div>
                                 </td>
- 				<!-- お気に入りボタン -->
+ 				<!-- scan -->
                                 <td class="table-text">
                                 <form action="{{ url('/') }}" type=”submit” method="post">
                                 {{ csrf_field() }}

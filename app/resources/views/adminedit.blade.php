@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
     @include('common.errors')
-        <form action="{{ url('adminedit/update') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">>
+        <form action="{{ url('adminedit/update') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             <!-- item_name -->
 
             <div class="form-group">

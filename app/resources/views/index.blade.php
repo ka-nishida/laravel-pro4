@@ -29,18 +29,19 @@
                                 </td>
  				<!-- scan -->
                                 <td class="table-text">
-                                <form action="{{ url('/') }}" type=”submit” method="post">
-                                {{ csrf_field() }}
-                                
-                                @if ($post->scan===1)
-                                <p><button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-secondary'>scan申請済み</button></p>
-                                <div class="alert alert-secondary" role="alert">
-                                Scan処理が完了するまでお待ち下さい。<br>処理完了後、こちらにリンクが表示されます。
-                                </div>
-                                @else
-                                <button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-danger'>scanして中身をみる</button>
-                                @endif
-                                </form>
+                                    <form action="{{ url('/') }}" type=”submit” method="post">
+                                    
+                                    {{ csrf_field() }}
+                                    
+                                    @if ($post->scan===1)
+                                    <p><button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-secondary'>scan申請済み</button></p>
+                                    <div class="alert alert-secondary" role="alert">
+                                    Scan処理が完了するまでお待ち下さい。<br>処理完了後、こちらにリンクが表示されます。
+                                    </div>
+                                    @else
+                                    <button type=”submit” name="scan" value="{{ $post->id }}" class='btn btn-danger'>scanして中身をみる</button>
+                                    @endif
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

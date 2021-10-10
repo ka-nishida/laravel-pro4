@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    
+
+                    <p>ユーザー管理画面<br>
+                    <a href="{{ url('/') }}">ユーザーが郵送物を確認できるサイトへ飛びます。</a></p>
+
+                    <p>管理画面<br>
+                    <a href="{{ url('admin') }}">写真画像をUPする管理画面へ飛びます。</a></p>
+
+
                 </div>
             </div>
         </div>

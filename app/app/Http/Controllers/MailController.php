@@ -94,7 +94,6 @@ class MailController extends Controller
         $id = $request->scan;
         $scans = Mail::find($id);
         $scan = $scans->scan;
-        dump($scan);
         if($scan<>1){
             $scans->scan = 1;
             $scans->save();
